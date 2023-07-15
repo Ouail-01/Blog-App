@@ -17,5 +17,4 @@ describe Comment, type: :model do
     comment.Text = ''
     expect(comment.Text).to_not eql 'first comment'
   end
-
 end

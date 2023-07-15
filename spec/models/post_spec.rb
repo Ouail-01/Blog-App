@@ -49,5 +49,4 @@ RSpec.describe Post, type: :model do
   it 'updates post counter' do
     expect { subject.author.increment!(:PostsCounter) }.to change { subject.author.PostsCounter }.by(1)
   end
-  
 end

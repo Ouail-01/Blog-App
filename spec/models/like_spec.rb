@@ -17,7 +17,7 @@ RSpec.describe Like, type: :model do
     user = User.new(Name: 'Ouail', Photo: 'www.unsplash.com', Bio: 'Lorem ipsum', PostsCounter: 5)
 
     post = Post.new(author: user, Title: 'first post', Text: 'this is the first post', CommentsCounter: 3,
-    LikesCounter: 2)
+                    LikesCounter: 2)
 
     like = Like.new(author_id: 1, post:)
 
