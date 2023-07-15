@@ -1,8 +1,8 @@
 class Like < ApplicationRecord
-  belongs_to :user
+  belongs_to :author, class_name: 'User'
   belongs_to :post
 
-  after_save :update_likes_counter
+  validates :LikesCounter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   def update_likes_counter
     post.update(LikesCounter: post.likes.count)

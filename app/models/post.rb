@@ -7,6 +7,11 @@ class Post < ApplicationRecord
 
   private
 
+  validates :Title, presence: true
+  validates :Title, length: { maximum: 250 }
+  validates :CommentsCounter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  validates :LikesCounter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+
   def update_post_counter
     author.update(PostsCounter: author.posts.count)
   end
