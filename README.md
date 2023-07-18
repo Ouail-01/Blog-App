@@ -4,7 +4,6 @@
 
 # 📗 Table of Contents
 
-- [Blog-App](#rails-blog-app)
 - [📗 Table of Contents](#-table-of-contents)
 - [📖 Blog-App ](#-rails-blog-app-)
   - [🛠 Built With ](#-built-with-)
