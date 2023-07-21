@@ -1,11 +1,11 @@
 <div>
-  <h2><%=@post.Title%></h2>
-  <p>Comments: <%=@post.CommentsCounter || 0 %>, Likes: <%=@post.LikesCounter || 0 %></p>
-  <p><%=@post.Text%></p>
+<h2><%=@post.Title%></h2>
+<p>Comments: <%=@post.CommentsCounter || 0 %>, Likes: <%=@post.LikesCounter || 0 %></p>
+<p><%=@post.Text%></p>
 </div>
 
 <div>
-  <% @post.latest_five_comments do |comment| %>
-  <p><%= comment.author.name %>: <%= comment.text %></p>
-  <% end %>
+<% @post.latest_five_comments.each do |comment| %>
+<p><%= comment.author.Name %>: <%= comment.Text %></p>
+<% end %>
 </div>
