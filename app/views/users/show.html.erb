@@ -1,19 +1,21 @@
 <section>
-#   <img src="<%=@user.Photo%>">
   <div>
-    <h2><%=@user.Name%></h2>
-    <p>Number of posts: <%=@user.PostsCounter || 0%></p>
+#   <img src="<%=@user.Photo%>">
+    <div>
+      <h2><%=@user.Name%></h2>
+      <p>Number of posts: <%=@user.PostsCounter || 0%></p>
+    </div>
   </div>
   <div>
     <h2>Bio</h2>
-    <p><%=@user.Bio%></p>
+  <p><%=@user.Bio%></p>
   </div>
   <%@user.latest_three_posts.each do |post| %>
   <div>
-    <%# post title h2 %>
     <h2><%=post.Title%></h2>
-    <%# post text p %>
     <p><%=post.Text%></p>
+    <p>Comments: <%=post.CommentsCounter || 0 %>, Likes: <%=post.LikesCounter || 0 %></p>
   </div>
   <%end%>
+  <button><%= link_to "See all posts", "/users/#{@user.id}/posts"%></button>
 </section>
