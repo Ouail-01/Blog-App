@@ -9,5 +9,14 @@
 <% @post.latest_five_comments.each do |comment| %>
 <p><%= comment.author.Name %>: <%= comment.Text %></p>
 <% end %>
+<%= form_with model: @comment, url: user_post_path do |form| %>
+  <div>
+    <%= form.hidden_field :author_id, value: @post.author.id %>
+    <%= form.hidden_field :post_id, value: @post.id %>
+    <%= form.text_area :text, placeholder: "text" %><br>
+    <%= form.submit %>
+  </div>
+  <%end%>
+  </div>
 </div>
 </section>
