@@ -1,1 +1,11 @@
-<h1>List of the users</h1>
+<section class="user-list center">
+  <% @users.each do |user| %>
+    <div class="user-card center">
+      <img src="<%=user.Photo%>" alt="User profile">
+      <div>
+        <h2><%=user.Name%></h2>
+        <p>Number of posts: <%=user.PostsCounter || 0%></p>
+      </div>
+    </div>
+    <%end%>
+</section>

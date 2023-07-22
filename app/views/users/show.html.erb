@@ -1,1 +1,21 @@
-<h1>Users profile</h1>
+<section class="user-profile center">
+  <div class="user-card center">
+    <img src="<%=@user.Photo%>" alt="User profile">
+    <div>
+      <h2><%=@user.Name%></h2>
+      <p>Number of posts: <%=@user.PostsCounter || 0%></p>
+    </div>
+  </div>
+  <div class="user-bio">
+    <h2>Bio</h2>
+    <p><%=@user.Bio%></p>
+  </div>
+  <%@user.latest_three_posts.each do |post| %>
+  <div class="post-card">
+    <h2><%=post.Title%></h2>
+    <p><%=post.Text%></p>
+    <h5>Comments: <%=post.CommentsCounter || 0 %>, Likes: <%=post.LikesCounter || 0 %></h5>
+  </div>
+  <%end%>
+  <button class="all-posts"><%= link_to "See all posts", "/users/#{@user.id}/posts"%></button>
+</section>
