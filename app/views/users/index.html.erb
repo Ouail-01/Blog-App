@@ -1,7 +1,7 @@
-<section>
+<section class="user-list center">
   <% @users.each do |user| %>
-    <div>
-      <img src="<%=user.Photo%>">
+    <div class="user-card center">
+      <img src="<%=user.Photo%>" alt="User profile">
       <div>
         <h2><%=user.Name%></h2>
         <p>Number of posts: <%=user.PostsCounter || 0%></p>
