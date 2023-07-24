@@ -50,6 +50,8 @@ gem 'bootsnap', require: false
 
 group :development, :test do
   gem 'rspec-rails', '~> 6.0.0'
+  gem 'capybara'
+  gem 'selenium-webdriver'
 
   gem 'rails-controller-testing'
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
