@@ -17,5 +17,5 @@
     <h5>Comments: <%=post.CommentsCounter || 0 %>, Likes: <%=post.LikesCounter || 0 %></h5>
   </div>
   <%end%>
-  <button class="all-posts"><%= link_to "See all posts", "/users/#{@user.id}/posts"%></button>
+  <button value="see-all" class="all-posts"><%= link_to "See all posts", "/users/#{@user.id}/posts"%></button>
 </section>
