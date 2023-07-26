@@ -75,5 +75,4 @@ RSpec.describe 'user profile page', type: :system do
     expect(page).to have_current_path("/users/#{@user1.id}/posts")
     # sleep(2)
   end
-
 end

@@ -42,7 +42,6 @@ end
 Capybara.javascript_driver = :selenium_chrome
 
 RSpec.configure do |config|
-
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
   end
@@ -63,7 +62,7 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
-  
+
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{Rails.root}/spec/fixtures"
 
