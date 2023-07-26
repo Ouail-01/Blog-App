@@ -80,5 +80,4 @@ RSpec.describe 'user profile page', type: :system do
     click_link 'See all posts'
     expect(page).to have_current_path("/users/#{@user1.id}/posts")
   end
-
 end

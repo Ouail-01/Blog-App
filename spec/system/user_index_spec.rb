@@ -48,6 +48,5 @@ RSpec.describe 'Visit home page', type: :system do
       click_on @user1.Name
       expect(page).to have_current_path("/users/#{@user1.id}")
     end
-    
   end
 end

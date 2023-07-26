@@ -1,10 +1,10 @@
 <section class="user-profile center">
   <div class="user-card center">
     <img src="<%=@user.Photo%>" alt="User profile">
-    <div>
+    <a>
       <h2><%=@user.Name%></h2>
       <p>Number of posts: <%=@user.PostsCounter || 0%></p>
-    </div>
+    </a>
   </div>
   <div class="user-bio">
     <h2>Bio</h2>

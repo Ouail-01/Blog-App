@@ -43,4 +43,17 @@ RSpec.describe 'Render post index page', type: :feature do
   scenario "when click on a post, it redirects to the post's show page" do
     expect(page).to have_content(@first_post.Title)
   end
+
+  it 'shows the users profile picture' do
+    img = find('.user-img')
+    expect(img[:src]).to have_content(@user.Photo)
+  end
+
+  it 'shows the users username' do
+    expect(page).to have_content(@user.Name)
+  end
+
+  it 'shows the number of posts the user has written' do
+    expect(page).to have_content('Number of posts: 0')
+  end
 end
