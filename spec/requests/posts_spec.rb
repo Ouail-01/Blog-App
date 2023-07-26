@@ -7,7 +7,7 @@ describe 'GET all posts for a user' do
     get "/users/#{user.id}/posts"
 
     expect(response).to be_successful
-    expect(response.body).to include('<h1>Posts for a given user</h1>')
+    expect(response.body).to include('<h2>Test User</h2>')
     expect(response).to render_template(:index)
   end
 end
@@ -20,7 +20,7 @@ describe 'GET specific post for a user' do
     get "/users/#{user.id}/posts/#{post.id}"
 
     expect(response).to be_successful
-    expect(response.body).to include('<h1>Posts</h1>')
+    expect(response.body).to include('<h2>Test Post | by Test User</h2>')
     expect(response).to render_template(:show)
   end
 end

@@ -49,6 +49,7 @@ gem 'bootsnap', require: false
 # gem "image_processing", "~> 1.2"
 
 group :development, :test do
+  gem 'database_cleaner'
   gem 'rspec-rails', '~> 6.0.0'
 
   gem 'rails-controller-testing'

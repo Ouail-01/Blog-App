@@ -43,7 +43,7 @@
   border: 3px solid black;
 }
 
-.user-card div {
+.user-card a {
   border: 3px solid #000;
   margin-left: 20px;
   width: 55%;

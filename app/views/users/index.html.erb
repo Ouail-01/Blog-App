@@ -2,10 +2,10 @@
   <% @users.each do |user| %>
     <div class="user-card center">
       <img src="<%=user.Photo%>" alt="User profile">
-      <div>
+      <a href="/users/<%= user.id %>">
         <h2><%=user.Name%></h2>
         <p>Number of posts: <%=user.PostsCounter || 0%></p>
-      </div>
+      </a>
     </div>
     <%end%>
 </section>
