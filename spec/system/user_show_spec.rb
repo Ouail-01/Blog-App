@@ -39,25 +39,21 @@ RSpec.describe 'user profile page', type: :system do
   it "show the user's profile picture" do
     visit "/users/#{@user1.id}"
     expect(page).to have_selector("img[src*='#{@user1.Photo}']")
-    # sleep(2)
   end
 
   it "show the user's picture picture" do
     visit "/users/#{@user1.id}"
     expect(page).to have_content(@user1.Name)
-    # sleep(2)
   end
 
   it 'shows number of posts the user has written' do
     visit "/users/#{@user1.id}"
     expect(page).to have_content("Number of posts: #{@user1.PostsCounter}")
-    # sleep(2)
   end
 
   it 'shows theuser\'s bio ' do
     visit "/users/#{@user1.id}"
     expect(page).to have_content(@user1.Bio)
-    # sleep(2)
   end
 
   it 'shows three recent posts' do
@@ -66,13 +62,23 @@ RSpec.describe 'user profile page', type: :system do
     expect(page).to have_content(@post3.Text)
     expect(page).to have_content(@post5.Text)
     expect(page).not_to have_content(@post4.Text)
-    # sleep(2)
   end
 
   it 'should redirect to the users profile page' do
     visit "/users/#{@user1.id}"
     click_button('See all')
     expect(page).to have_current_path("/users/#{@user1.id}/posts")
-    # sleep(2)
   end
+
+  it 'show button that lets me view all of a users posts ' do
+    visit "/users/#{@user2.id}"
+    expect(page).to have_content('See all posts')
+  end
+
+  it 'should redirect to the user\'s post\'s page' do
+    visit "/users/#{@user1.id}"
+    click_link 'See all posts'
+    expect(page).to have_current_path("/users/#{@user1.id}/posts")
+  end
+
 end

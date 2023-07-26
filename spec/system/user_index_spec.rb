@@ -42,5 +42,12 @@ RSpec.describe 'Visit home page', type: :system do
       expect(page).to have_content(@user1.Name)
       sleep(2)
     end
+
+    it 'redirect to the users show page when you click on a user' do
+      visit '/users'
+      click_on @user1.Name
+      expect(page).to have_current_path("/users/#{@user1.id}")
+    end
+    
   end
 end
