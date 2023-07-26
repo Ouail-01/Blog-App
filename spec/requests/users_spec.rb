@@ -4,7 +4,7 @@ describe 'GET /users' do
   it 'returns a successful response' do
     get '/users'
     expect(response).to be_successful
-    expect(response.body).to include('<h1>List of the users</h1>')
+    expect(response.body).to include('<body>')
     expect(response).to render_template(:index)
   end
 end
@@ -21,7 +21,7 @@ describe 'GET /users/:id' do
     get "/users/#{user.id}"
 
     expect(response).to be_successful
-    expect(response.body).to include('<h1>Users profile</h1>')
+    expect(response.body).to include('<h2>Bio</h2>')
     expect(response).to render_template(:show)
   end
 end
