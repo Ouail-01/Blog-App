@@ -130,6 +130,12 @@ Run tests with:
  - Twitter: [@Ouail_Laarabi](https://twitter.com/Ouail_Laarabi)
  - LinkedIn: [Ouail Laarabi](https://www.linkedin.com/in/ouail-laarabi-53203b250/)
 
+ 👤 **Heldricks Adhola**
+
+- GitHub: [@githubhandle](https://github.com/Adholah96)
+- Twitter: [@twitterhandle](https://twitter.com/nerdy_me_)
+- Linkedin [@linkedinprofile](https://www.linkedin.com/in/heldricks-arthur/)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- FUTURE FEATURES -->
