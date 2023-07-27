@@ -121,3 +121,11 @@
   margin: 10px;
   margin-bottom: 20px;
 }
+
+.login .loginn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
