@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
+  devise_for :users
+  
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+
+  root 'users#index'
 
   # Defines the root path route ("/")
 
@@ -10,4 +14,5 @@ Rails.application.routes.draw do
     end
   end
   
+  post '/users/:id/posts/create', to: 'posts#create'
 end

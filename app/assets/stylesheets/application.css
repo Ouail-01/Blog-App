@@ -121,3 +121,63 @@
   margin: 10px;
   margin-bottom: 20px;
 }
+
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login .loginn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+}
+
+.login h2 {
+  font-size: 35px;
+}
+
+.login form {
+  width: 100%;
+  text-align: center;
+}
+
+.inputs {
+  width: 80%;
+  height: 30px;
+  margin-top: 20px;
+}
+
+.login .actions {
+  margin-top: 15px;
+}
+
+.signup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.signup form {
+  width: 100%;
+  text-align: center;
+}
+
+.signup .actions {
+  margin-top: 15px;
+}
+
+.signupp {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
