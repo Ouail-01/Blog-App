@@ -1,10 +1,14 @@
 class Comment < ApplicationRecord
   belongs_to :author, class_name: 'User'
   belongs_to :post
-
-  # validates :comment_counter, numericality: { allow_blank: true, greater_than_or_equal_to: 0 }
-
-  def update_comments_counter
-    post.update(comment_counter: post.comments.count)
+​
+  validates :text, presence: true
+​
+  after_save :update_comment_counter
+  before_destroy -> { Post.find_by(id: post_id).decrement!(:comment_counter) }
+​
+  def update_comment_counter
+    post = Post.find_by(id: post_id)
+    post.increment!(:comment_counter)
   end
 end
