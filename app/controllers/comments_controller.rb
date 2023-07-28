@@ -15,9 +15,6 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    # @post = Post.find_by_id(params[:id])
-    # @user = User.find_by_id(params[:user_id])
-    # @comment = Comment.where(author: @user, post: @post)
     @comment = Comment.find_by_id(params[:comment_info])
 
     @comment.destroy
