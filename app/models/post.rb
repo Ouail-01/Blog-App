@@ -1,18 +1,15 @@
 class Post < ApplicationRecord
   belongs_to :author, class_name: 'User'
-  has_many :comments
-  has_many :likes
+  has_many :comments, foreign_key: :post_id
+  has_many :likes, foreign_key: :post_id
 
-  validates :Title, presence: true
-  validates :Title, length: { maximum: 250 }
-  validates :CommentsCounter, numericality: { allow_blank: true, greater_than_or_equal_to: 0 }
-  validates :LikesCounter, numericality: { allow_blank: true, greater_than_or_equal_to: 0 }
+  before_save -> { User.find_by(id: author.id).increment!(:posts_counter) }
+  before_destroy -> { User.find_by(id: author.id).decrement!(:posts_counter) }
 
-  def update_post_counter
-    author.update(PostsCounter: author.posts.count)
-  end
+  scope :get_5_comments, ->(post) { post.comments.order('created_at DESC').limit(5) }
 
-  def latest_five_comments
-    comments.includes(:post).order(created_at: :desc).limit(5)
-  end
+  validates :title, presence: true
+  validates :author, presence: true
+  validates :title, length: { in: 1..250 }
+  validates :likes_counter, :comment_counter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 end

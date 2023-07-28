@@ -14,19 +14,19 @@ RSpec.describe Like, type: :model do
   end
 
   it 'checks likes_counter method' do
-    user = User.new(Name: 'Ouail', Photo: 'www.unsplash.com', Bio: 'Lorem ipsum', PostsCounter: 5)
+    user = User.new(name: 'Ouail', photo: 'www.unsplash.com', bio: 'Lorem ipsum', posts_counter: 5)
 
-    post = Post.new(author: user, Title: 'first post', Text: 'this is the first post', CommentsCounter: 3,
-                    LikesCounter: 2)
+    post = Post.new(author: user, title: 'first post', text: 'this is the first post', comment_counter: 3,
+                    likes_counter: 2)
 
     like = Like.new(author_id: 1, post:)
 
-    post.LikesCounter = 2
+    post.likes_counter = 2
     post.save
 
     like.update_likes_counter
     like.update_likes_counter
 
-    expect(post.LikesCounter).to_not eq(2)
+    expect(post.likes_counter).to_not eq(2)
   end
 end

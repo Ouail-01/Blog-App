@@ -1,26 +1,27 @@
 <section class="user-profile center">
   <div class="post-card">
-    <h2><%=@post.Title%> | by <%=@post.author.Name%></h2>
-    <p><%=@post.Text%></p>
-    <%= form_with model: @like, url: new_user_post_path do |form|%>
-      <%= form.hidden_field :post_id, value: @post.id %>
-      <%= form.submit "<3"  %>
-    <% end %>
-    <h5>Comments: <%=@post.CommentsCounter || 0 %>, Likes: <%=@post.LikesCounter || 0 %></h5>
+    <h2><%= @post.title%> by <%= @post.author.name%></h2>
+    <p><%= @post.text%></p>
+    <h5>Comments: <%= @post.comment_counter%> likes: <%= @post.likes_counter %></h5>
+    <%= render 'shared/like' %>
   </div>
-
 <div class="comment-container">
-<% @post.latest_five_comments.each do |comment| %>
-<p><%= comment.author.Name %>: <%= comment.Text %></p>
+    <% @post.comments.includes([:author]).each do |comment| %>
+     <p><%= comment.author.name%>: <%= comment.text %></p>
+     <% if can? :destroy, @post %>
+      <%= form_with(model: @comment, url: user_post_comment_path(params[:user_id], @post), method: :delete, data: { confirm: "Are you sure?" }) do |form| %>
+        <%= form.hidden_field :comment_info, value: "#{comment.id}" %>
+        <%= form.submit "Destroy Comment" %>
+      <% end %>
+     <% end %>
+    <%end%>
+<a href=<%="/users/#{params[:user_id]}/posts/#{@post.id}/comments/new"%>>Comment</a>
+<% if can? :destroy, @post %>
+ <%= form_with(model: @post, url: user_post_path(params[:user_id], @post), method: :delete, data: { confirm: "Are you sure?" }) do |form| %>
+  <%= form.submit "Destroy Post" %>
 <% end %>
-<%= form_with model: @comment, url: user_post_path do |form| %>
-  <div>
-    <%= form.hidden_field :author_id, value: @post.author.id %>
-    <%= form.hidden_field :post_id, value: @post.id %>
-    <%= form.text_area :text, placeholder: "text" %><br>
-    <%= form.submit %>
-  </div>
-  <%end%>
-  </div>
+<% end %>
+<%# <%= link_to "Destroy Post", "/users/#{params[:user_id]}/posts/#{@post.id}", method: :delete, data: { confirm: "Are you sure?" } %> 
+<%# user_post_path(params[:user_id], @post) %>
 </div>
-</section>
+</div>

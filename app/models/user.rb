@@ -1,22 +1,22 @@
 class User < ApplicationRecord
+  before_validation :set_default
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
-
-  has_many :comments, foreign_key: :author_id
   has_many :posts, foreign_key: :author_id
+  has_many :comments, foreign_key: :author_id
   has_many :likes, foreign_key: :author_id
+  has_many :posts, through: :likes, foreign_key: :author_id
+  has_many :posts, through: :comments, foreign_key: :author_id
 
-  before_validation -> { self.Name = email.split('@')[0] }
+  scope :three_recent_posts, ->(user) { Post.where(author_id: user.id).order('created_at desc').limit(3) }
 
-  def set_avatar
-    max_id = User.maximum('id')
-    new_id = max_id ? max_id + 1 : 1
-    self.photo ||= "https://i.pravatar.cc/100?u=#{new_id}"
-  end
+  validates :name, presence: true
+  validates :posts_counter, numericality: { only_integer: true }, comparison: { greater_than_or_equal_to: 0 }
 
-  def latest_three_posts
-    posts.includes(:author).order(created_at: :desc).limit(3)
+  def set_default
+    self.name = email.split('@')[0]
+    self.posts_counter = 0
   end
 end
