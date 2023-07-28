@@ -1,10 +1,10 @@
 <section class="user-list center">
   <% @users.each do |user| %>
     <div class="user-card center">
-      <img src="<%=user.Photo%>" alt="User profile">
+      <img src="<%=user.photo%>" alt="User profile">
       <a href="/users/<%= user.id %>">
-        <h2><%=user.Name%></h2>
-        <p>Number of posts: <%=user.PostsCounter || 0%></p>
+        <h2><%=user.name%></h2>
+        <p>Number of posts: <%=user.posts_counter || 0%></p>
       </a>
     </div>
     <%end%>

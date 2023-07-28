@@ -1,22 +1,22 @@
 <section class="user-profile center">
 <div class="user-card center">
-  <img class="user-img" src="<%=@user.Photo%>" alt="User profile">
+  <img class="user-img" src="<%=@user.photo%>" alt="User profile">
   <a>
-    <h2><%=@user.Name%></h2>
-    <p>Number of posts: <%=@user.PostsCounter || 0%></p>
+    <h2><%=@user.name%></h2>
+    <p>Number of posts: <%=@user.posts_counter || 0%></p>
   </a>
 </div>
 
 <% @user_posts.each do |post| %>
 <div class="post-card">
-  <h2><%=post.Title%></h2>
-  <p><%=post.Text%></p>
-  <h5>Comments: <%=post.CommentsCounter || 0 %>, Likes: <%=post.LikesCounter || 0 %></h5>
+  <h2><%=post.title%></h2>
+  <p><%=post.text%></p>
+  <h5>Comments: <%=post.comment_counter || 0 %>, Likes: <%=post.likes_counter || 0 %></h5>
 </div>
 
 <div class="comment-container">
   <% post.latest_five_comments.each do |comment| %>
-    <p><%= comment.author.Name %>: <%= comment.Text %></p>
+    <p><%= comment.author.name %>: <%= comment.text %></p>
   <% end %>
 </div>
 <%end%>

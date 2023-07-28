@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :posts, foreign_key: :author_id
   has_many :likes, foreign_key: :author_id
 
-  before_validation -> { self.Name = email.split('@')[0] }
+  before_validation -> { self.name = email.split('@')[0] }
 
   def set_avatar
     max_id = User.maximum('id')

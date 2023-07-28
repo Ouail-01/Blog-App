@@ -1,19 +1,19 @@
 <section class="user-profile center">
   <div class="post-card">
-    <h2><%=@post.Title%> | by <%=@post.author.Name%></h2>
-    <p><%=@post.Text%></p>
+    <h2><%=@post.title%> | by <%=@post.author.name%></h2>
+    <p><%=@post.text%></p>
     <%= form_with model: @like, url: new_user_post_path do |form|%>
       <%= form.hidden_field :post_id, value: @post.id %>
       <%= form.submit "<3"  %>
     <% end %>
-    <h5>Comments: <%=@post.CommentsCounter || 0 %>, Likes: <%=@post.LikesCounter || 0 %></h5>
+    <h5>Comments: <%=@post.comment_counter || 0 %>, Likes: <%=@post.likes_counter || 0 %></h5>
   </div>
 
 <div class="comment-container">
 <% @post.latest_five_comments.each do |comment| %>
-<p><%= comment.author.Name %>: <%= comment.Text %></p>
+<p><%= comment.author.name %>: <%= comment.text %></p>
 <% end %>
-<%= form_with model: @comment, url: user_post_path do |form| %>
+<%= form_with model: @comment, url: new_user_post_path do |form| %>
   <div>
     <%= form.hidden_field :author_id, value: @post.author.id %>
     <%= form.hidden_field :post_id, value: @post.id %>
