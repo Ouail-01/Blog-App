@@ -10,7 +10,7 @@
     <h2>bio</h2>
     <p><%=@user.bio%></p>
   </div>
-  <%@user.latest_three_posts.each do |post| %>
+  <%User.three_recent_posts(@user).each do |post| %>
   <div class="post-card">
     <h2><%=post.title%></h2>
     <p><%=post.text%></p>
