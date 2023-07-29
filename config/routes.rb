@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'authentication/login'
   devise_for :users
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -15,4 +16,14 @@ Rails.application.routes.draw do
   end
 
   post '/users/:id/posts/create', to: 'posts#create'
+
+  namespace :api do
+    namespace :v1 do
+      get '/user/:id/posts', to: 'posts#index'
+      get '/post/:id/comments', to: 'comments#index'
+      post 'post/:id/comment', to: 'comments#create'
+    end
+  end
+
+  post '/auth/login', to: 'authentication#login'
 end
